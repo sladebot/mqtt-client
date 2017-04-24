@@ -2,7 +2,7 @@
 
 import * as mqtt from 'mqtt'
 
-const client = mqtt.connect('mqtt://172.24.16.57:1337')
+const client = mqtt.connect('mqtt://172.24.19.191:1337')
 
 client.on('connect', () => {
   client.subscribe('presence')
