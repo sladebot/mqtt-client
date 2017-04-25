@@ -6,7 +6,12 @@ var mqtt = _interopRequireWildcard(_mqtt);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-var client = mqtt.connect('mqtt://172.24.19.191:1337');
+var client_host = process.env.VEGETA_HOST || 'localhost';
+var client_port = process.env.VEGETA_PORT || 1337;
+
+console.log("Trying to connect to - " + client_host);
+
+var client = mqtt.connect('mqtt:/' + client_host + ':' + client_port);
 
 client.on('connect', function () {
   client.subscribe('presence');

@@ -7,20 +7,22 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 RUN     \
-	apt-get -y -qq install python
+  apt-get -y -qq install python
 
-EXPOSE 1337
 
 RUN apt-get update \
-	&& apt-get install -y wget make g++ ruby-full \
-	&& apt-get install -y build-essential
+  && apt-get install -y wget make g++ ruby-full \
+  && apt-get install -y build-essential
 
-ADD package.json /src/package.json
-RUN cd /src && yarn
+RUN npm install && npm install -g gulp
+ADD . /app
 
-RUN apt-get install -y ruby ruby-dev
-ADD ./dist /src
-# Set working directory
-WORKDIR	/src
+WORKDIR /app
 
-CMD ["node client.js"]
+RUN node_modules/.bin/gulp
+
+EXPOSE 
+
+ENTRYPOINT ["bash", "-c"]
+CMD ["node dist/trunks.js"]
+
