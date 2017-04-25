@@ -8,10 +8,10 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var client_host = process.env.VEGETA_HOST || 'localhost';
 var client_port = process.env.VEGETA_PORT || 1337;
+var client_uri = 'mqtt://' + client_host + ':' + client_port;
 
-console.log("Trying to connect to - " + client_host);
-
-var client = mqtt.connect('mqtt:/' + client_host + ':' + client_port);
+var client = mqtt.connect(client_uri);
+console.log("Trying to connect to - " + client_uri);
 
 client.on('connect', function () {
   client.subscribe('presence');
