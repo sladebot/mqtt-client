@@ -6,9 +6,6 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
-RUN     \
-  apt-get -y -qq install python
-
 
 RUN apt-get update \
   && apt-get install -y wget make g++ ruby-full \
@@ -20,8 +17,6 @@ ADD . /app
 WORKDIR /app
 
 RUN node_modules/.bin/gulp
-
-EXPOSE 
 
 ENTRYPOINT ["bash", "-c"]
 CMD ["node dist/trunks.js"]
