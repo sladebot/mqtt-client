@@ -11,7 +11,7 @@ var os = _interopRequireWildcard(_os);
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var client_host = process.env.VEGETA_HOST || 'localhost';
-var client_port = process.env.VEGETA_PORT || 1337;
+var client_port = process.env.VEGETA_PORT || 1883;
 var client_uri = 'mqtt://' + client_host + ':' + client_port;
 
 var client = mqtt.connect(client_uri);

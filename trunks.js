@@ -3,7 +3,7 @@
 import * as mqtt from 'mqtt'
 import * as os from 'os'
 const client_host = process.env.VEGETA_HOST || 'localhost';
-const client_port = process.env.VEGETA_PORT || 1337;
+const client_port = process.env.VEGETA_PORT || 1883;
 const client_uri = 'mqtt://' + client_host + ':' + client_port;
 
 
